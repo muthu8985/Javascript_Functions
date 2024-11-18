@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript_functions</title>
+  </head>
+  <body>
+    <!-- simple functions  -->
+    <script>
+      function myfunctiona() {
+        return;
+      }
+      myfunctiona();
+    </script>
+    <script>
+      let x = myfunc(1, 2);
+
+      function myfunc(a, b) {
+        return a * b;
+      }
+      document.write(x);
+    </script>
+    <p>JavaScript has an built-in function constructor.</p>
+    <p id="demo"></p>
+    <p>Functions can be invoked automatically without being called:</p>
+    <p id="demo1"></p>
+    <p>
+      Arrow Functions Arrow functions allows a short syntax for writing function
+      expressions. You don't need the function keyword, the return keyword, and
+      the curly brackets.
+    </p>
+    <pre>
+      Example:
+      const x = (x, y) => { return x * y };
+    </pre>
+    <p>
+      A JavaScript function does not perform any checking on parameter values
+      (arguments).
+    </p>
+    <p>Setting a default value to a function parameter.</p>
+    <p id="demo2"></p>
+
+    <script>
+      function myFunction1(x1, y1) {
+        if (y1 === undefined) {
+          y1 = 2;
+        }
+        return x1 * y1;
+      }
+      document.getElementById("demo2").innerHTML = myFunction1(4);
+    </script>
+    <h2>Default Parameter Values</h2>
+    <p>If y is not passed or undefined, then y2 = 10:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+      function myFunction2(x2, y2 = 10) {
+        return x2 + y2;
+      }
+      document.getElementById("demo3").innerHTML = myFunction2(5);
+    </script>
+    <p>Finding the largest number.</p>
+    <p id="demo4"></p>
+
+    <script>
+      function findMax() {
+        let max = -Infinity;
+        for (let i = 0; i < arguments.length; i++) {
+          if (arguments[i] > max) {
+            max = arguments[i];
+          }
+        }
+        return max;
+      }
+      document.getElementById("demo4").innerHTML = findMax(4, 5, 6);
+    </script>
+    <p>
+      The code inside a JavaScript function will execute when "something"
+      invokes it.
+    </p>
+
+    <p>
+      The global function (myFunction) returns the product of the arguments (a
+      ,b):
+    </p>
+
+    <p id="demo5"></p>
+
+    <script>
+      function myFunction5(a1, b1) {
+        return a1 * b1;
+      }
+      document.getElementById("demo5").innerHTML = myFunction5(10, 2);
+      //  OR
+      // document.getElementById("demo").innerHTML = window.myFunction(10, 2);
+    </script>
+    <p>In JavaScript, the this keyword refers to an object.</p>
+    <p>myObject.fullName() will return John Doe:</p>
+
+    <p id="demo6"></p>
+
+    <script>
+      const myObject = {
+        firstName: "John",
+        lastName: "Doe",
+        fullName: function () {
+          return this.firstName + " " + this.lastName;
+        },
+      };
+      document.getElementById("demo6").innerHTML = myObject.fullName();
+      // or
+      // fullName: function() {
+      // return this;
+    </script>
+    <p>In this example, myFunction is a function constructor:</p>
+
+    <p id="demo7"></p>
+
+    <script>
+      function myFunction1(arg1, arg2) {
+        this.firstName1 = arg1;
+        this.lastName1 = arg2;
+      }
+
+      const myObj = new myFunction1("John", "Doe");
+      document.getElementById("demo7").innerHTML = myObj.firstName1;
+    </script>
+    <p>
+      With the call() method, you can write a method that can be used on
+      different objects.
+    </p>
+    <p>
+      The call() method is a predefined JavaScript method. It can be used to
+      invoke (call) a method with an owner object as an argument (parameter)
+    </p>
+    <p>
+      Method Reuse With the apply() method, you can write a method that can be
+      used on different objects.
+    </p>
+    <pre>
+          document.getElementById("demo").innerHTML = person.fullName.apply(person1); </pre
+    >
+    <pre>
+            The Difference Between call() and apply()
+The difference is:
+
+The call() method takes arguments separately.
+
+The apply() method takes arguments as an array.
+
+The apply() method is very handy if you want to use an array instead of an argument list.
+          </pre
+    >
+    <p>
+      JavaScript Strict Mode In JavaScript strict mode, if the first argument of
+      the apply() method is not an object, it becomes the owner (object) of the
+      invoked function. In "non-strict" mode, it becomes the global object.
+    </p>
+    <p>
+      Function Borrowing With the bind() method, an object can borrow a method
+      from another object. The example below creates 2 objects (person and
+      member).
+    </p>
+    <p>This example creates 2 objects (person and member).</p>
+    <p>The member object borrows the fullname method from person:</p>
+
+    <p id="demo8"></p>
+
+    <script>
+      const persona = {
+        firstName3: "John",
+        lastName3: "Doe",
+        fullName3: function () {
+          return this.firstName3 + " " + this.lastName3;
+        },
+      };
+
+      const member = {
+        firstName3: "Hege",
+        lastName3: "Nilsen",
+      };
+
+      let fullName3 = persona.fullName3.bind(member);
+
+      document.getElementById("demo8").innerHTML = fullName3();
+    </script>
+    <p>the person object has a display method:</p>
+    <p>
+      JavaScript variables can belong to the local or global scope. Global
+      variables can be made local (private) with closures.
+    </p>
+    <pre>
+    <script>
+      myFunction();
+      
+      function myFunction() {
+        let a = 4;
+        document.getElementById("demo").innerHTML = a * a;
+      }
+      </script>
+      <!--  -->
+But a function can also access variables defined outside the function, like this:
+<!--  -->
+      
+  </pre>
+    <p>
+      Variable Lifetime Global variables live until the page is discarded, like
+      when you navigate to another page or close the window. Local variables
+      have short lives. They are created when the function is invoked, and
+      deleted when the function is finished.
+    </p>
+    <h2>JavaScript Closures</h2>
+    <p>Counting with a local variable.</p>
+
+    <button type="button" onclick="myFunctioncls()">Count!</button>
+
+    <p id="demo10">0</p>
+
+    <script>
+      // Function to increment counter
+      function add() {
+        let counter = 0;
+        counter += 1;
+        return counter;
+      }
+      // Trying to increment the counter
+      function myFunctioncls() {
+        document.getElementById("demo10").innerHTML = add();
+      }
+    </script>
+    <p id="demo9">Counting with a local variable.</p>
+    <h2>JavaScript Closures</h2>
+
+    <p>Counting with a local variable.</p>
+
+    <button type="button" onclick="myFunction()">Count!</button>
+
+    <p id="demo11">0</p>
+
+    <script>
+      const addcou = (function () {
+        let counter = 0;
+        return function () {
+          counter += 1;
+          return counter;
+        };
+      })();
+
+      function myFunctioncou() {
+        document.getElementById("demo11").innerHTML = addcou();
+      }
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>
